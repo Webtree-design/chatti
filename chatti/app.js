@@ -16,7 +16,7 @@ function createWindow() {
 
   mainWindow.loadURL(
     url.format({
-      pathname: path.join(__dirname, 'dist/chatti/browser/index.html'), // Ensure this matches your angular.json outputPath
+      pathname: path.join(__dirname, `/dist/chatti/index.html`),
       protocol: "file:",
       slashes: true
     })
