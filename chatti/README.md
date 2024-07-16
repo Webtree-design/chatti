@@ -4,3 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## run projekt 
 npm run electron 
+
+
+
+
+
+## ng generate component MyComponent --skip-test
+
+breuch.tizian@gmail.com

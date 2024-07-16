@@ -10,13 +10,14 @@ function createWindow() {
     height: 600,
     webPreferences: {
       contextIsolation: true,
-      preload: path.join(__dirname, 'app-preload.js') // Preload script
+      preload: path.join(__dirname, 'app-preload.js'),
+      webSecurity: false // Disable web security (for development purposes only)
     }
   });
 
   mainWindow.loadURL(
     url.format({
-      pathname: path.join(__dirname, `/dist/chatti/index.html`),
+      pathname: path.join(__dirname, `/dist/chatti/browser/index.html`),
       protocol: "file:",
       slashes: true
     })
