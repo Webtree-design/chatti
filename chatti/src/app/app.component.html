@@ -1,1 +1,23 @@
-<router-outlet></router-outlet>
+<mat-drawer-container class="example-container" autosize>
+ 
+  <mat-drawer
+    #drawer
+    class="example-sidenav"
+    mode="side"
+    [ngClass]="{ 'sidenav-menu-desktop': !isMobileSidenav, 'sidenav-menu-half': isHalfSidenav }"
+    [disableClose]="true"
+  >
+    <div class="sidenav-content">
+      <mat-icon>home</mat-icon>
+      <mat-icon>account_circle</mat-icon>
+      <mat-icon>settings</mat-icon>
+      <!-- Add more icons as needed -->
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="toggleSidenav()">
+      Toggle sidenav
+    </button>
+  </div>
+</mat-drawer-container>

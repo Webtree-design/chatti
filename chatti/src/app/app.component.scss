@@ -1,0 +1,25 @@
+.example-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 16px;
+  width: 270px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.sidenav-menu-half {
+  width: 85px;
+}
