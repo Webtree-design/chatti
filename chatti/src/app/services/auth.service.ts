@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import PocketBase from 'pocketbase';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private pb: PocketBase;
@@ -11,7 +11,7 @@ export class AuthService {
     this.pb = new PocketBase('https://pocket.webtree-design.de');
   }
 
-  isLoggedIn(): boolean {
+  async isLoggedIn(): Promise<boolean> {
     return this.pb.authStore.isValid;
   }
 

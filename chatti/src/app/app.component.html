@@ -1,3 +1,4 @@
+<app-login *ngIf="!isLogged"></app-login>
 <section class="section">
   <mat-toolbar class="toolbar">
     <button
@@ -31,25 +32,41 @@
       mode="side"
       [ngClass]="{
         'sidenav-menu-desktop': !isMobileSidenav,
-        'sidenav-menu-half': isHalfSidenav
+        'sidenav-menu-half': isHalfSidenav,
+        
       }"
       [disableClose]="true"
     >
       <div class="sidenav-content">
-        <button type="button" mat-button (click)="toggleSidenav()">
-          Toggle sidenav
-        </button>
-        <mat-icon>home</mat-icon>
-        <mat-icon>account_circle</mat-icon>
-        <mat-icon>settings</mat-icon>
-        <!-- Add more icons as needed -->
+        <div>
+          <button (click)="toggleSidenav()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <div
+            [ngStyle]="{
+              opacity: isHalfSidenav ? '0' : '1'
+            }"
+          ></div>
+        </div>
+
+
+        <div class="button-parent">
+          <button (click)="toggleSidenav()">
+            <mat-icon>home</mat-icon>
+          </button>
+          <div
+            [ngStyle]="{
+              opacity: isHalfSidenav ? '0' : '1'
+            }"
+          >
+            Start
+          </div>
+        </div>
       </div>
     </mat-drawer>
 
     <mat-drawer-content class="drawer-content">
-      
-        <router-outlet></router-outlet>
-      
+      <router-outlet (activate)="onRouterLinkActivate()"></router-outlet>
     </mat-drawer-content>
   </mat-drawer-container>
 </section>

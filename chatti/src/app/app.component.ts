@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, HostListener, inject, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,8 +9,10 @@ import {
 } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { AuthService } from './services/auth.service';
 
+import { LoginComponent } from './components/login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   template: '<app-root></app-root>',
   standalone: true,
   imports: [
+    LoginComponent,
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
@@ -26,7 +29,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     CommonModule,
     MatDrawer,
     MatDrawerContent,
-    MatToolbarModule
+    MatToolbarModule,
   ],
 })
 export class AppComponent {
@@ -39,10 +42,24 @@ export class AppComponent {
   protected isMobileSidenav: boolean = false;
   protected isHalfSidenav: boolean = false;
 
-  constructor() {}
+  public isLogged: boolean = true;
 
-  ngOnInit() {
+  constructor(private authService: AuthService) {
+    this.isLoggedin();
+  }
+
+  async ngOnInit() {
+    await this.isLoggedin();
     this.sideNav();
+  }
+
+  async onRouterLinkActivate() {
+    await this.isLoggedin();
+  }
+
+  async isLoggedin() {
+    this.isLogged = await this.authService.isLoggedIn();
+    console.log({ isLogged: this.isLogged });
   }
 
   sideNav() {
@@ -74,7 +91,7 @@ export class AppComponent {
       this.content.getElementRef().nativeElement.style.marginLeft = this
         .isHalfSidenav
         ? '85px'
-        : '270px';
+        : '220px';
     }
   }
 }

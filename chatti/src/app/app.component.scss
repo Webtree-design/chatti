@@ -5,7 +5,8 @@
 }
 
 ::ng-deep .toolbar {
-  background-color: var(--backgroundcolor) !important;
+  background-color: var(--backgroundOne) !important;
+  padding: 12px !important;
 }
 
 .container {
@@ -16,14 +17,53 @@
 }
 
 .sidenav-menu {
-  // margin: 12px;
   padding: 12px;
-  width: 270px;
+  width: 220px;
   display: flex;
   align-items: stretch;
   overflow: hidden;
   transition: 0.4s ease-in-out;
-  // border: 1px solid grey;
+  border: none;
+}
+
+.sidenav-content {
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  justify-content: start; /* Zentriert den Button horizontal */
+  align-items: center; /* Zentriert den Button vertikal */
+  width: 100%; /* Stellt sicher, dass das übergeordnete Div die gesamte verfügbare Breite einnimmt */
+  overflow: hidden; /* Verhindert Überlauf */
+
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border-radius: 12px;
+    div {
+      padding-left: 12px;
+      overflow: hidden;
+      transition: 0.3s ease-in-out;
+    }
+  }
+  
+  button {
+    border-radius: 12px;
+    max-width: 100%;
+    padding: 8px 18px;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.button-parent {
+  display: flex;
+  transition: 0.3s ease-in-out;
+}
+.button-parent:hover {
+  transition: 0.3s ease-in-out;
+  background-color: green !important;
 }
 
 .sidenav-menu-half {
@@ -32,7 +72,9 @@
 
 .drawer-content {
   padding: 12px;
-  background-color: grey !important;
+  gap: 12px;
+  background-color: var(--backgroundOne) !important;
+  width: 100%;
 }
 
 .router-content {
