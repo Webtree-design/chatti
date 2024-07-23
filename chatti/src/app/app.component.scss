@@ -1,23 +1,43 @@
-.container {
-  width: 100vw;
+.section {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .toolbar {
+  background-color: var(--backgroundcolor) !important;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
 }
 
 .sidenav-menu {
-  padding: 16px;
+  // margin: 12px;
+  padding: 12px;
   width: 270px;
   display: flex;
   align-items: stretch;
   overflow: hidden;
   transition: 0.4s ease-in-out;
+  // border: 1px solid grey;
 }
 
 .sidenav-menu-half {
   width: 85px;
 }
 
+.drawer-content {
+  padding: 12px;
+  background-color: grey !important;
+}
+
+.router-content {
+  background-color: black !important;
+}
 .mat-drawer-transition .mat-drawer-content {
   transition-duration: 0.4s !important;
   transition-timing-function: ease-in-out !important;

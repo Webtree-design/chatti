@@ -9,6 +9,8 @@ import {
 } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 @Component({
   selector: 'app-root',
@@ -24,6 +26,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     CommonModule,
     MatDrawer,
     MatDrawerContent,
+    MatToolbarModule
   ],
 })
 export class AppComponent {
