@@ -1,25 +1,24 @@
-.example-container {
+.container {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: row;
 }
 
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.example-sidenav {
+.sidenav-menu {
   padding: 16px;
   width: 270px;
   display: flex;
   align-items: stretch;
   overflow: hidden;
+  transition: 0.4s ease-in-out;
 }
 
 .sidenav-menu-half {
   width: 85px;
+}
+
+.mat-drawer-transition .mat-drawer-content {
+  transition-duration: 0.4s !important;
+  transition-timing-function: ease-in-out !important;
 }

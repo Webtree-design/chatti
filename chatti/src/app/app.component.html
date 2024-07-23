@@ -1,13 +1,17 @@
-<mat-drawer-container class="example-container" autosize>
- 
+<mat-drawer-container class="container">
   <mat-drawer
-    #drawer
-    class="example-sidenav"
+    class="sidenav-menu"
     mode="side"
-    [ngClass]="{ 'sidenav-menu-desktop': !isMobileSidenav, 'sidenav-menu-half': isHalfSidenav }"
+    [ngClass]="{
+      'sidenav-menu-desktop': !isMobileSidenav,
+      'sidenav-menu-half': isHalfSidenav
+    }"
     [disableClose]="true"
   >
     <div class="sidenav-content">
+      <button type="button" mat-button (click)="toggleSidenav()">
+        Toggle sidenav
+      </button>
       <mat-icon>home</mat-icon>
       <mat-icon>account_circle</mat-icon>
       <mat-icon>settings</mat-icon>
@@ -15,9 +19,7 @@
     </div>
   </mat-drawer>
 
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="toggleSidenav()">
-      Toggle sidenav
-    </button>
-  </div>
+  <mat-drawer-content class="drawer-content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
 </mat-drawer-container>
