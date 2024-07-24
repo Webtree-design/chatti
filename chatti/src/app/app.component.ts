@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthService } from './services/auth.service';
 
 import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
   standalone: true,
   imports: [
     LoginComponent,
+    RegistrationComponent,
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
@@ -42,24 +44,22 @@ export class AppComponent {
   protected isMobileSidenav: boolean = false;
   protected isHalfSidenav: boolean = false;
 
-  public isLogged: boolean = true;
+  
 
-  constructor(private authService: AuthService) {
-    this.isLoggedin();
-  }
+  constructor(
+    public authService: AuthService,
+  ) {}
 
-  async ngOnInit() {
-    await this.isLoggedin();
+  ngOnInit() {
     this.sideNav();
   }
 
-  async onRouterLinkActivate() {
-    await this.isLoggedin();
+  onRouterLinkActivate() {
+    this.authService.isLoggedIn();
   }
 
-  async isLoggedin() {
-    this.isLogged = await this.authService.isLoggedIn();
-    console.log({ isLogged: this.isLogged });
+  logOut(){
+    this.authService.logout()
   }
 
   sideNav() {
@@ -70,12 +70,12 @@ export class AppComponent {
           if (this.sidenav) {
             if (res.matches) {
               this.sidenav.mode = 'over';
-              this.isMobileSidenav = true;
+              this.isMobileSidenav = false;
               this.sidenav.close();
             } else {
               this.sidenav.mode = 'side';
               this.isMobileSidenav = false;
-              this.isHalfSidenav = false;
+              this.isHalfSidenav = true;
               this.sidenav.open();
             }
           }

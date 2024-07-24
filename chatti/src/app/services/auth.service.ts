@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import PocketBase from 'pocketbase';
 
 @Injectable({
@@ -7,19 +8,31 @@ import PocketBase from 'pocketbase';
 export class AuthService {
   private pb: PocketBase;
 
-  constructor() {
+  public isLogged: boolean = false;
+  public isRegistered = false;
+
+  constructor(private router: Router) {
     this.pb = new PocketBase('https://pocket.webtree-design.de');
   }
 
-  async isLoggedIn(): Promise<boolean> {
+  isLoggedIn(): boolean {
+    this.isLogged = this.pb.authStore.isValid;
     return this.pb.authStore.isValid;
   }
 
-  getAuthToken(): string | null {
-    return this.pb.authStore.token;
+  // getAuthToken(): string | null {
+  //   return this.pb.authStore.token;
+  // }
+
+  toggleRegister() {
+    this.isRegistered = !this.isRegistered;
   }
 
   logout(): void {
     this.pb.authStore.clear();
+    this.router.navigate(['/login']);
+  }
+
+  async getUserRecord(token: string) {
   }
 }

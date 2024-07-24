@@ -7,6 +7,8 @@
 ::ng-deep .toolbar {
   background-color: var(--backgroundOne) !important;
   padding: 12px !important;
+  padding-inline: 30px !important;
+  justify-content: space-between;
 }
 
 .container {
@@ -41,14 +43,16 @@
     align-items: center;
     justify-content: start;
     border-radius: 12px;
+
     div {
       padding-left: 12px;
       overflow: hidden;
       transition: 0.3s ease-in-out;
     }
   }
-  
+
   button {
+    cursor: pointer;
     border-radius: 12px;
     max-width: 100%;
     padding: 8px 18px;
@@ -58,12 +62,25 @@
 }
 
 .button-parent {
+  cursor: pointer;
   display: flex;
   transition: 0.3s ease-in-out;
 }
 .button-parent:hover {
   transition: 0.3s ease-in-out;
   background-color: green !important;
+}
+
+.toggle-button mat-icon {
+  transition: transform 0.3s ease;
+}
+
+.menu-icon {
+  transform: rotate(0deg);
+}
+
+.close-icon {
+  transform: rotate(180deg);
 }
 
 .sidenav-menu-half {
@@ -83,4 +100,8 @@
 .mat-drawer-transition .mat-drawer-content {
   transition-duration: 0.4s !important;
   transition-timing-function: ease-in-out !important;
+}
+
+.mat-drawer.mat-drawer-side{
+  z-index: 0 !important;
 }

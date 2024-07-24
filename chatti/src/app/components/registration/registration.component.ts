@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule],
 })
 export class RegistrationComponent {
   user = {
@@ -26,6 +26,16 @@ export class RegistrationComponent {
   error: string | null = null;
 
   constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit() {
+    this.redirect();
+  }
+
+  redirect() {
+    if (this.authService.isLogged) {
+      this.router.navigate(['/home']);
+    }
+  }
 
   async onSubmit() {
     try {
@@ -48,15 +58,21 @@ export class RegistrationComponent {
       this.router.navigate(['/home']); // Redirect to protected route
     } catch (error: any) {
       console.error('Error registering user', error);
-      this.error = error?.response?.data?.message || 'Registration failed. Please try again.';
+      this.error =
+        error?.response?.data?.message ||
+        'Registration failed. Please try again.';
     }
   }
 
   async registerWithOAuth2(provider: string) {
     try {
-      const authData = await this.pb.collection('users').authWithOAuth2({ provider });
+      const authData = await this.pb
+        .collection('users')
+        .authWithOAuth2({ provider });
       console.log('User registered successfully via OAuth2', authData);
-      await this.pb.collection('users').requestVerification(authData.meta?.['email']);
+      await this.pb
+        .collection('users')
+        .requestVerification(authData.meta?.['email']);
       console.log(authData.meta?.['email']);
       this.router.navigate(['/home']); // Redirect to protected route
     } catch (error: any) {
@@ -64,7 +80,12 @@ export class RegistrationComponent {
       if (error?.response) {
         console.error('Response error:', error.response);
       }
-      this.error = error?.response?.data?.message || 'OAuth2 Registration failed. Please try again.';
+      this.error =
+        error?.response?.data?.message ||
+        'OAuth2 Registration failed. Please try again.';
     }
+  }
+  public toggleRegister() {
+    this.authService.toggleRegister();
   }
 }
