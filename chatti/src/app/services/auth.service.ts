@@ -9,7 +9,7 @@ export class AuthService {
   private pb: PocketBase;
 
   public isLogged: boolean = false;
-  public isRegistered = false;
+  public isRegistering: boolean = false;
 
   constructor(private router: Router) {
     this.pb = new PocketBase('https://pocket.webtree-design.de');
@@ -25,7 +25,7 @@ export class AuthService {
   // }
 
   toggleRegister() {
-    this.isRegistered = !this.isRegistered;
+    this.isRegistering = !this.isRegistering;
     this.router.navigate(['/registration']);
   }
 

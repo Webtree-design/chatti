@@ -25,7 +25,9 @@ export class RegistrationComponent {
   pb = new PocketBase('https://pocket.webtree-design.de');
   error: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.isRegistering = true;
+  }
 
   ngOnInit() {
     this.redirect();

@@ -1,8 +1,8 @@
 <app-login
-  *ngIf="!authService.isLogged && !authService.isRegistered"
+  *ngIf="!authService.isLogged && !authService.isRegistering"
 ></app-login>
 <app-registration
-  *ngIf="!authService.isLogged && authService.isRegistered"
+  *ngIf="!authService.isLogged && authService.isRegistering"
 ></app-registration>
 
 <section class="section">
