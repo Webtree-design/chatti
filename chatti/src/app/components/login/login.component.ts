@@ -21,9 +21,7 @@ export class LoginComponent {
   pb = new PocketBase('https://pocket.webtree-design.de');
   error: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.authService.isLogged = true;
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.redirect();
@@ -65,6 +63,7 @@ export class LoginComponent {
   }
 
   public toggleRegister() {
+    this.router.navigate(['/registration']);
     this.authService.toggleRegister();
   }
 }

@@ -88,6 +88,7 @@ export class RegistrationComponent {
     }
   }
   public toggleRegister() {
+    this.router.navigate(['/login']);
     this.authService.toggleRegister();
   }
 }

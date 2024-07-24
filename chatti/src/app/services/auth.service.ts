@@ -26,7 +26,6 @@ export class AuthService {
 
   toggleRegister() {
     this.isRegistering = !this.isRegistering;
-    this.router.navigate(['/registration']);
   }
 
   logout(): void {
