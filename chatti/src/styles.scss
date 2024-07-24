@@ -43,15 +43,16 @@ $chatti-theme: mat.define-light-theme(
 html,
 body {
   height: 100%;
+  background-color: rgb(189, 189, 189) !important;
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-::root {
-  --backgroundOne: grey;
-  --backgroundTwo: rgb(104, 104, 104);
+::ng-deep ::root {
+  --backgroundOne: rgb(229, 12, 12) !important;
+  --backgroundTwo: rgb(104, 104, 104) !important;
 
-  --whiteOne: rgb(255, 247, 238);
+  --whiteOne: rgb(255, 253, 250) !important;
 }

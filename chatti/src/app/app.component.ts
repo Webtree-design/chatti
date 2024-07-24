@@ -42,7 +42,7 @@ export class AppComponent {
     inject(BreakpointObserver);
 
   protected isMobileSidenav: boolean = false;
-  protected isHalfSidenav: boolean = false;
+  protected isHalfSidenav: boolean = true;
 
   
 

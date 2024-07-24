@@ -32,8 +32,8 @@
           </button>
         </div>
 
-        <div class="button-parent">
-          <button routerLink="home">
+        <div class="button-parent" routerLink="/home">
+          <button>
             <mat-icon>home</mat-icon>
           </button>
           <div
@@ -45,8 +45,8 @@
           </div>
         </div>
 
-        <div class="button-parent">
-          <button routerLink="posts">
+        <div class="button-parent" routerLink="/posts">
+          <button>
             <mat-icon>wallpaper</mat-icon>
           </button>
           <div
@@ -54,14 +54,16 @@
               opacity: isHalfSidenav ? '0' : '1'
             }"
           >
-            Start
+            Posts
           </div>
         </div>
       </div>
     </mat-drawer>
 
     <mat-drawer-content class="drawer-content">
-      <router-outlet (activate)="onRouterLinkActivate()"></router-outlet>
+      <div class="drawer-content-box">
+        <router-outlet (activate)="onRouterLinkActivate()"></router-outlet>
+      </div>
     </mat-drawer-content>
   </mat-drawer-container>
 </section>

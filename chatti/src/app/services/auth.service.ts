@@ -26,6 +26,7 @@ export class AuthService {
 
   toggleRegister() {
     this.isRegistered = !this.isRegistered;
+    this.router.navigate(['/registration']);
   }
 
   logout(): void {
@@ -33,6 +34,5 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  async getUserRecord(token: string) {
-  }
+  async getUserRecord(token: string) {}
 }
