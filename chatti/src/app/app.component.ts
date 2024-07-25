@@ -15,6 +15,8 @@ import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 
+// import { initFlowbite } from 'flowbite';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -52,6 +54,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.sideNav();
+    // initFlowbite();
   }
 
   onRouterLinkActivate() {

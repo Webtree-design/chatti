@@ -3,10 +3,12 @@ import { PocketbaseService } from 'src/app/services/pocketbase.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import PocketBase from 'pocketbase';
+import { DropdownComponent } from '../flowbite/dropdown/dropdown.component';
+
 @Component({
   selector: 'app-beitraege',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, DropdownComponent],
   templateUrl: './beitraege.component.html',
   styleUrl: './beitraege.component.scss',
 })
@@ -17,7 +19,9 @@ export class BeitraegeComponent {
     content: '',
     images: [],
   };
+  public selectedItem: string = 'Choose category';
   error: string | null = null;
+
   constructor(private pocketBaseService: PocketbaseService) {
     this.pb = new PocketBase('https://pocket.webtree-design.de');
   }
@@ -50,5 +54,9 @@ export class BeitraegeComponent {
     if (event.target.files && event.target.files.length > 0) {
       this.data.images = Array.from(event.target.files);
     }
+  }
+
+  onItemSelected(item: string) {
+    this.selectedItem = item;
   }
 }
