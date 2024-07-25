@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PocketbaseService } from 'src/app/services/pocketbase.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -35,6 +35,7 @@ export class BeitraegeComponent {
   public secondTableVisible: boolean = false;
   error: string | null = null;
 
+  @ViewChild('table_head') table_head: any;
   constructor(private pocketBaseService: PocketbaseService) {
     this.pb = new PocketBase('https://pocket.webtree-design.de');
   }
