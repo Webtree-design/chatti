@@ -38,23 +38,31 @@
 <div
   class="max-h-[33px] flex items-center w-full justify-start gap-3 flex-column flex-wrap md:flex-row p-0 bg-white dark:bg-gray-900"
 >
+<!-- <p>Selected Item: {{ selectedItem }}</p> -->
   <app-dropdown
-    class="fix-tabs-position"
+    class="fix-tabs-position "
     (itemSelected)="onItemSelected($event)"
   ></app-dropdown>
-  <!-- <p>Selected Item: {{ selectedItem }}</p> -->
-  <app-searchbar class="fix-tabs-position"></app-searchbar>
+  <app-searchbar
+    class="fix-tabs-position "
+  ></app-searchbar>
   <app-toggle-list
-    class="fix-tabs-position"
+    class="fix-tabs-position "
     (checkboxChange)="handleCheckboxChange($event)"
   ></app-toggle-list>
 </div>
 
 <div class="border rounded-lg overflow-hidden rounded-tl-none">
   <!-- here is first table -->
-  <div class="list-one" [ngClass]="!checkbox ? 'table-one-expanded' : 'table-one-collapsed'">
-    <table *ngIf="firstTableVisible" class="table w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-       <thead
+  <div
+    class="list-one"
+    [ngClass]="!checkbox ? 'table-one-expanded' : 'table-one-collapsed'"
+  >
+    <table
+      *ngIf="firstTableVisible"
+      class="table w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+    >
+      <thead
         class="text-xs border rounded-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
       >
         <tr>
@@ -280,9 +288,15 @@
   </div>
   <!-- Second table after first table removed -->
 
-  <div class="list-two" [ngClass]="checkbox ? 'table-two-expanded' : 'table-two-collapsed'">
-    <table *ngIf="secondTableVisible" class="table w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-     <thead
+  <div
+    class="list-two"
+    [ngClass]="checkbox ? 'table-two-expanded' : 'table-two-collapsed'"
+  >
+    <table
+      *ngIf="secondTableVisible"
+      class="table w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+    >
+      <thead
         class="text-xs border rounded-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
       >
         <tr>
