@@ -31,7 +31,8 @@ export class BeitraegeComponent {
   };
   public selectedItem: string = 'Choose category';
   public checkbox: boolean = false;
-  public tableVisible: boolean = true;
+  public firstTableVisible: boolean = true;
+  public secondTableVisible: boolean = false;
   error: string | null = null;
 
   constructor(private pocketBaseService: PocketbaseService) {
@@ -80,16 +81,16 @@ export class BeitraegeComponent {
   toggleTable() {
     if (this.checkbox) {
       // Collapsing
-      this.checkbox = false;
-      setTimeout(() => {
-        this.tableVisible = false;
-      }, 250); // Match this duration with the CSS transition duration
+      this.checkbox = !this.checkbox;
+      this.firstTableVisible = !this.firstTableVisible;
+      this.secondTableVisible = !this.secondTableVisible;
+      setTimeout(() => {}, 250); // Match this duration with the CSS transition duration
     } else {
       // Expanding
-      this.tableVisible = true;
-      setTimeout(() => {
-        this.checkbox = true;
-      }, 10); // Small delay to ensure the DOM update
+      this.checkbox = !this.checkbox;
+      this.secondTableVisible = !this.secondTableVisible;
+      this.firstTableVisible = !this.firstTableVisible;
+      setTimeout(() => {}, 250);
     }
   }
 }
