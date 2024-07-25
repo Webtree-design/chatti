@@ -1,0 +1,23 @@
+.toggle-button {
+  transform: scale(0.95);
+}
+
+.toggle-button-fix-position {
+  max-height: 33px;
+}
+.icon {
+  transition: transform 0.3s ease;
+  margin-left: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+
+.app-icon {
+  transform: rotate(180deg);
+}
+
+.list-icon {
+  transform: rotate(0deg);
+}

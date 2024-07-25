@@ -1,24 +1,21 @@
-// .searchbar-box{
-//     border: none !important;
-
-//     outline: none !important;
-// }
-// .searchbar-box:focus{
-//     outline: none !important;
-
-// }
+.fix-tabs-position {
+  transform: translateY(1px);
+}
 
 table {
   border-collapse: separate;
   border-spacing: 0;
-  
 }
-// .bordered {
-//     border: solid #ccc 1px;
-//     -moz-border-radius: 6px;
-//     -webkit-border-radius: 6px;
-//     border-radius: 6px;
-//     -webkit-box-shadow: 0 1px 1px #ccc;
-//     -moz-box-shadow: 0 1px 1px #ccc;
-//     box-shadow: 0 1px 1px #ccc;
-// }
+
+.list {
+  transition: max-height 0.25s ease-in-out;
+  overflow: hidden; /* Ensures content is hidden during collapse */
+}
+
+.table-one-expanded {
+  max-height: 1000px; /* Expanded state with a value larger than the content height */
+}
+
+.table-one-collpsed {
+  max-height: 0px; /* Collapsed state */
+}

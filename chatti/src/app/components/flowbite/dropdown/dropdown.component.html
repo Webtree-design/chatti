@@ -1,58 +1,56 @@
-<div>
-  <button
-    id="dropdownActionButton"
-    class="inline-flex items-center justify-between w-44 text-gray-500 border border-b-0 bg-gray-50 rounded-b-none focus:outline-none hover:bg-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
-    type="button"
+<button
+  id="dropdownActionButton"
+  class="inline-flex items-center justify-between w-44 text-gray-500 border border-b-0 bg-gray-50 rounded-b-none focus:outline-none hover:bg-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+  type="button"
+>
+  <span class="sr-only">Action button</span>
+  {{ selectedItem }}
+  <svg
+    class="w-2.5 h-2.5"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 10 6"
   >
-    <span class="sr-only">Action button</span>
-    {{ selectedItem }}
-    <svg
-      class="w-2.5 h-2.5"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 10 6"
-    >
-      <path
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="m1 1 4 4 4-4"
-      />
-    </svg>
-  </button>
-  <!-- Dropdown menu -->
+    <path
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="m1 1 4 4 4-4"
+    />
+  </svg>
+</button>
+<!-- Dropdown menu -->
 
-  <div
-    id="dropdownAction"
-    class="dropdownContent rounded-t-none z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-  >
-    <ul class="text-sm text-gray-700 dark:text-gray-200">
-      <li>
-        <a
-          class="dropdown-item block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >All</a
-        >
-      </li>
-      <li>
-        <a
-          class="dropdown-item block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >Reward</a
-        >
-      </li>
-      <li>
-        <a
-          class="dropdown-item block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >Promote</a
-        >
-      </li>
-      <li>
-        <a
-          class="dropdown-item block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >Activate account</a
-        >
-      </li>
-    </ul>
-  </div>
+<div
+  id="dropdownAction"
+  class="dropdownContent rounded-t-none z-10 hidden bg-white divide-y divide-gray-100 rounded-lg w-44 dark:bg-gray-700 dark:divide-gray-600"
+>
+  <ul class="text-sm text-gray-700 dark:text-gray-200 border border-t-0 rounded-lg rounded-t-none ">
+    <li>
+      <a
+        class="dropdown-item block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >All</a
+      >
+    </li>
+    <li>
+      <a
+        class="dropdown-item block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Reward</a
+      >
+    </li>
+    <li>
+      <a
+        class="dropdown-item block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Promote</a
+      >
+    </li>
+    <li>
+      <a
+        class="dropdown-item block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Activate account</a
+      >
+    </li>
+  </ul>
 </div>

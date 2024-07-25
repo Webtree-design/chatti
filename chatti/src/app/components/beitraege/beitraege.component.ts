@@ -4,13 +4,23 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import PocketBase from 'pocketbase';
 import { DropdownComponent } from '../flowbite/dropdown/dropdown.component';
+import { ToggleListComponent } from '../flowbite/toggle-list/toggle-list.component';
+import { SearchbarComponent } from '../flowbite/searchbar/searchbar.component';
+import { TableComponent } from '../flowbite/table/table.component';
 
 @Component({
   selector: 'app-beitraege',
   standalone: true,
-  imports: [CommonModule, FormsModule, DropdownComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    DropdownComponent,
+    ToggleListComponent,
+    SearchbarComponent,
+    TableComponent,
+  ],
   templateUrl: './beitraege.component.html',
-  styleUrl: './beitraege.component.scss',
+  styleUrls: ['./beitraege.component.scss'],
 })
 export class BeitraegeComponent {
   private pb: PocketBase;
@@ -20,6 +30,8 @@ export class BeitraegeComponent {
     images: [],
   };
   public selectedItem: string = 'Choose category';
+  public checkbox: boolean = false;
+  public tableVisible: boolean = true;
   error: string | null = null;
 
   constructor(private pocketBaseService: PocketbaseService) {
@@ -58,5 +70,26 @@ export class BeitraegeComponent {
 
   onItemSelected(item: string) {
     this.selectedItem = item;
+  }
+
+  handleCheckboxChange(value: boolean) {
+    console.log(value);
+    this.toggleTable();
+  }
+
+  toggleTable() {
+    if (this.checkbox) {
+      // Collapsing
+      this.checkbox = false;
+      setTimeout(() => {
+        this.tableVisible = false;
+      }, 250); // Match this duration with the CSS transition duration
+    } else {
+      // Expanding
+      this.tableVisible = true;
+      setTimeout(() => {
+        this.checkbox = true;
+      }, 10); // Small delay to ensure the DOM update
+    }
   }
 }

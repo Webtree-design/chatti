@@ -1,0 +1,86 @@
+<div
+  class="max-h-[33px] inline-flex items-center justify-between w-auto text-gray-500 border border-b-0 bg-gray-50 rounded-b-none focus:outline-none hover:bg-gray-100 font-medium rounded-lg text-sm dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+>
+  <label for="contractToggle" class="contract_toggle">
+    <input type="checkbox" id="contractToggle" name="contract_toggle" />
+    <span class="toggle_bar">
+      <span class="toggle_square"></span>
+    </span>
+  </label>
+</div>
+
+
+$distance: 70; //px
+$width: 30; //px
+// @import url("https://fonts.googleapis.com/css?family=Rubik");
+
+.toggle_bar {
+  text-align: center;
+
+  width: #{$distance}px;
+  display: block;
+  height: #{$width}px;
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 0.5rem 0.5rem 0 0;
+  cursor: pointer;
+  .toggle_square {
+    transition: left 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+      background 0.2s ease;
+    background: rgba(#da4453, 1);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: #{$distance - $width}px;
+    width: #{$width}px;
+    height: auto;
+
+    &:before {
+      content: "\d7";
+      display: block;
+      color: white;
+      will-change: content;
+      transition: content 0.2s ease;
+      line-height: #{$width}px;
+      text-align: center;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  }
+}
+.contract_toggle {
+  input[type="checkbox"] {
+    display: none;
+    position: absolute;
+    appearance: none;
+    &:checked ~ .toggle_bar {
+      .toggle_square {
+        background: rgba(#37bc9b, 1);
+        left: 0;
+        &:before {
+          content: "✓";
+        }
+      }
+    }
+  }
+}
+
+.made-by-me {
+  position: fixed;
+  text-decoration: none;
+  box-sizing: border-box;
+  right: 16px;
+  bottom: 16px;
+  width: 44px;
+  height: 44px;
+  display: block;
+  border-radius: 100%;
+  border: 2px solid white;
+  box-shadow: 0 0 30px 0 rgba(black, 0.3);
+  font-size: 0px;
+  background: url("https://assets.codepen.io/50099/internal/avatars/users/default.png")
+    no-repeat center;
+  background-size: cover;
+}
+
