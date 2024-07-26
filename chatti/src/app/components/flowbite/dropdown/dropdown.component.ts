@@ -11,7 +11,7 @@ import type { InstanceOptions } from 'flowbite';
 })
 export class DropdownComponent implements OnInit {
   @Output() itemSelected = new EventEmitter<string>();
-  public selectedItem: string = 'Choose category';
+  public selectedItem: string = 'Category';
 
   ngOnInit() {
     initFlowbite();

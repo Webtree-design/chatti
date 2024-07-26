@@ -1,33 +1,3 @@
 .fix-tabs-position {
   transform: translateY(1px);
 }
-
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-}
-.list-one {
-  transition: max-height 1.5s;
-  // overflow: hidden; /* Ensures content is hidden during collapse */
-}
-
-.table-one-expanded {
-  max-height: 1000px; /* Expanded state with a value larger than the content height */
-}
-
-.table-one-collapsed {
-  max-height: 0px; /* Collapsed state */
-}
-
-.list-two {
-  transition: max-height 1.5s;
-  // overflow: hidden; /* Ensures content is hidden during collapse */
-}
-
-.table-two-expanded {
-  max-height: 1000px; /* Expanded state with a value larger than the content height */
-}
-
-.table-two-collapsed {
-  max-height: 0px; /* Collapsed state */
-}

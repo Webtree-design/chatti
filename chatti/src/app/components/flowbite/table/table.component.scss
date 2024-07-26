@@ -1,0 +1,49 @@
+// #wrapper {
+//     scrollbar-width: none;
+//     overflow: hidden; /* Hide scrollbars */
+// }
+
+.expandable {
+  background: #fff;
+  overflow: hidden;
+  transition: all 0.25s ease-in-out;
+  line-height: 0;
+  padding: 0 0.75em;
+  color: transparent;
+  opacity: 0;
+}
+
+.expandable.expanded {
+  opacity: 1;
+  line-height: 1.5;
+  padding: 0.75rem;
+  padding-bottom: 0rem !important;
+  color: black;
+}
+
+.expandable-two {
+  background: #f9fafb;
+  overflow: hidden;
+  transition: all 0.25s ease-in-out;
+  line-height: 0;
+  padding: 0 0.75em;
+  color: transparent;
+  opacity: 0;
+}
+
+.expandable-two.expanded {
+  opacity: 1;
+  line-height: 1.5;
+  padding: 0.75rem;
+  color: black;
+}
+
+::ng-deep .cdk-virtual-scroll-spacer {
+  height: 100%;
+}
+
+@media only screen and (max-width: 373px) {
+  .table-media-screen {
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+}

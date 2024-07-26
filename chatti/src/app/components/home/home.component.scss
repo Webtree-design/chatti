@@ -1,0 +1,17 @@
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Or any height you want the container to be */
+}
+
+.item {
+    padding: 10px;
+    /* Optional: to visually distinguish items */
+    border: 1px solid #ccc;
+}
+
+.grow {
+    flex-grow: 1;
+}

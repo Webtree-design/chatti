@@ -7,6 +7,7 @@ import { DropdownComponent } from '../flowbite/dropdown/dropdown.component';
 import { ToggleListComponent } from '../flowbite/toggle-list/toggle-list.component';
 import { SearchbarComponent } from '../flowbite/searchbar/searchbar.component';
 import { TableComponent } from '../flowbite/table/table.component';
+import { PaginationComponent } from '../flowbite/pagination/pagination.component';
 
 @Component({
   selector: 'app-beitraege',
@@ -18,6 +19,7 @@ import { TableComponent } from '../flowbite/table/table.component';
     ToggleListComponent,
     SearchbarComponent,
     TableComponent,
+    PaginationComponent,
   ],
   templateUrl: './beitraege.component.html',
   styleUrls: ['./beitraege.component.scss'],
@@ -29,13 +31,13 @@ export class BeitraegeComponent {
     content: '',
     images: [],
   };
-  public selectedItem: string = 'Choose category';
+  public selectedItem: string = 'Category';
   public checkbox: boolean = false;
   public firstTableVisible: boolean = true;
   public secondTableVisible: boolean = false;
+
   error: string | null = null;
 
-  @ViewChild('table_head') table_head: any;
   constructor(private pocketBaseService: PocketbaseService) {
     this.pb = new PocketBase('https://pocket.webtree-design.de');
   }
