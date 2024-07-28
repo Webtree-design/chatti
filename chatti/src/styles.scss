@@ -58,3 +58,7 @@ body {
 }
 
 
+.fix-top-tabs-position {
+  transform: translateY(1px);
+  z-index: 10;
+}

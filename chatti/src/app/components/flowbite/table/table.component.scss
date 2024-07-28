@@ -6,7 +6,7 @@
 .expandable {
   background: #fff;
   overflow: hidden;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease;
   line-height: 0;
   padding: 0 0.75em;
   color: transparent;
@@ -24,7 +24,7 @@
 .expandable-two {
   background: #f9fafb;
   overflow: hidden;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease;
   line-height: 0;
   padding: 0 0.75em;
   color: transparent;
@@ -47,8 +47,6 @@
     border-radius: 0 0 0.5rem 0.5rem;
   }
 }
-
-
 
 /* width */
 ::-webkit-scrollbar {

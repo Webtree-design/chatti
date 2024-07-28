@@ -1,10 +1,8 @@
 .toggle-button {
   transform: scale(0.95);
+  cursor: pointer !important;
 }
 
-.toggle-list-fix-position {
-  max-height: 33px;
-}
 .icon {
   transition: transform 0.25s ease;
   margin-left: 6px;
@@ -12,6 +10,7 @@
   justify-content: center;
   align-items: center;
   height: 20px;
+  
 }
 
 .app-icon {

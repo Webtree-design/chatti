@@ -39,7 +39,7 @@ export class PaginationComponent implements OnInit {
       // Instance options object
       const instanceOptions = {
         id: 'dropdownMenuPaginator',
-        override: true,
+        override: false,
       };
 
       // Create a new Dropdown object
@@ -50,20 +50,20 @@ export class PaginationComponent implements OnInit {
         instanceOptions
       );
 
-        // Add click event listener to the trigger element
-        $triggerEl.addEventListener('click', (event) => {
-          if (dropdown.isVisible()) {
-            return dropdown.hide();
-          }
-          dropdown.show();
-        });
+      // Add click event listener to the trigger element
+      $triggerEl.addEventListener('click', (event) => {
+        if (dropdown.isVisible()) {
+          return dropdown.hide();
+        }
+        dropdown.show();
+      });
 
-        $targetEl.addEventListener('click', (event) => {
-          dropdown.hide();
-          const target = event.target as HTMLElement;
-          this.paginationSelected.emit(target.textContent?.trim() || '');
-          this.selectedPagination = target.textContent?.trim() || '';
-        });
+      $targetEl.addEventListener('click', (event) => {
+        dropdown.hide();
+        const target = event.target as HTMLElement;
+        this.paginationSelected.emit(target.textContent?.trim() || '');
+        this.selectedPagination = target.textContent?.trim() || '';
+      });
     }
   }
 

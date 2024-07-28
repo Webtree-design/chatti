@@ -8,6 +8,7 @@ import { ToggleListComponent } from '../flowbite/toggle-list/toggle-list.compone
 import { SearchbarComponent } from '../flowbite/searchbar/searchbar.component';
 import { TableComponent } from '../flowbite/table/table.component';
 import { PaginationComponent } from '../flowbite/pagination/pagination.component';
+import { AddComponent } from '../flowbite/add/add.component';
 
 @Component({
   selector: 'app-beitraege',
@@ -20,6 +21,7 @@ import { PaginationComponent } from '../flowbite/pagination/pagination.component
     SearchbarComponent,
     TableComponent,
     PaginationComponent,
+    AddComponent,
   ],
   templateUrl: './beitraege.component.html',
   styleUrls: ['./beitraege.component.scss'],

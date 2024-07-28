@@ -1,31 +1,33 @@
-<button
-  id="dropdownActionButton"
-  class="dropdown inline-flex items-center justify-between max-w-fit min-w-32 text-gray-500 border border-b-0 bg-gray-50 rounded-b-none focus:outline-none hover:bg-gray-100 font-medium rounded-t-none md:rounded-t-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
-  type="button"
->
-  <span class="sr-only">Action button</span>
-  {{ selectedItem }}
-  <svg
-    class="w-2.5 h-2.5 ml-2.5"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 10 6"
+<div class="fix-top-tabs-position">
+  <button
+    id="dropdownActionButtonCategory"
+    class="inline-flex items-center justify-between w-32 text-gray-500 border border-b-0 bg-gray-50 rounded-b-none focus:outline-none hover:bg-gray-100 font-medium rounded-t-none md:rounded-t-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+    type="button"
   >
-    <path
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="m1 1 4 4 4-4"
-    />
-  </svg>
-</button>
+    <span class="sr-only">Action button</span>
+    {{ selectedItem }}
+    <svg
+      class="w-2.5 h-2.5 ml-2.5"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 10 6"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m1 1 4 4 4-4"
+      />
+    </svg>
+  </button>
+</div>
 <!-- Dropdown menu -->
 
 <div
-  id="dropdownAction"
-  class="dropdownContent rounded-t-none z-10 hidden bg-white divide-y divide-gray-100 rounded-lg max-w-fit min-w-32 dark:bg-gray-700 dark:divide-gray-600"
+  id="dropdownActionCategory"
+  class="dropdownContent rounded-t-none z-10 hidden bg-gray-50 divide-y divide-gray-100 rounded-lg w-32 dark:bg-gray-700 dark:divide-gray-600"
 >
   <ul
     class="text-sm text-gray-700 dark:text-gray-200 border border-t-0 rounded-lg rounded-t-none"

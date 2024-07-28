@@ -19,13 +19,14 @@ export class DropdownComponent implements OnInit {
 
   initDropdown() {
     const $targetEl = document.getElementById(
-      'dropdownAction'
+      'dropdownActionCategory'
     ) as HTMLElement | null;
     const $triggerEl = document.getElementById(
-      'dropdownActionButton'
+      'dropdownActionButtonCategory'
     ) as HTMLElement | null;
 
     if ($targetEl && $triggerEl) {
+     
       const options: DropdownOptions = {
         placement: 'bottom',
         triggerType: 'none', // Set to 'none' to manually handle the toggle
@@ -37,8 +38,8 @@ export class DropdownComponent implements OnInit {
 
       // Instance options object
       const instanceOptions = {
-        id: 'dropdownMenu',
-        override: true,
+        id: 'dropdownMenuCategory',
+        override: false,
       };
 
       // Create a new Dropdown object
@@ -48,6 +49,7 @@ export class DropdownComponent implements OnInit {
         options,
         instanceOptions
       );
+      
 
       // Add click event listener to the trigger element
       $triggerEl.addEventListener('click', (event) => {
