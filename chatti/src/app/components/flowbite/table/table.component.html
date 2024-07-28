@@ -8,9 +8,9 @@
 
   <cdk-virtual-scroll-viewport
     appendOnly
-    itemSize="50"
-    class="border rounded-lg overflow-hidden rounded-tl-none"
-    [style.height.px]="bodyHeight - (firstTableVisible ? 49 : 1)"
+    itemSize=auto
+    class="border rounded-bl-lg overflow-hidden rounded-tl-none"
+    [style.height.px]="bodyHeight - (firstTableVisible ? 49 + 33 : 33)"
     [ngClass]="firstTableVisible ? 'rounded-t-none' : ''"
   >
     <div
@@ -93,4 +93,5 @@
       </div>
     </div>
   </cdk-virtual-scroll-viewport>
+  <app-pagination class="z-10"></app-pagination>
 </section>

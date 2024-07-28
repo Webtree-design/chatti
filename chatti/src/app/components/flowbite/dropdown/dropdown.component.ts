@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { initFlowbite, Dropdown } from 'flowbite';
-import type { DropdownOptions, DropdownInterface } from 'flowbite';
-import type { InstanceOptions } from 'flowbite';
+import type { DropdownOptions } from 'flowbite';
 
 @Component({
   selector: 'app-dropdown',

@@ -32,6 +32,7 @@ export class BeitraegeComponent {
     images: [],
   };
   public selectedItem: string = 'Category';
+  // public selectedPagination: string = 'All';
   public checkbox: boolean = false;
   public firstTableVisible: boolean = true;
   public secondTableVisible: boolean = false;
@@ -74,7 +75,13 @@ export class BeitraegeComponent {
 
   onItemSelected(item: string) {
     this.selectedItem = item;
+    console.log(item);
   }
+
+  // onPaginationSelected(item: string) {
+  //   this.selectedPagination = item;
+  //   console.log(item);
+  // }
 
   handleCheckboxChange(value: boolean) {
     console.log(value);
