@@ -38,6 +38,7 @@ export class BeitraegeComponent {
   public checkbox: boolean = false;
   public firstTableVisible: boolean = true;
   public secondTableVisible: boolean = false;
+  public mobile: boolean = false;
 
   error: string | null = null;
 
@@ -48,6 +49,16 @@ export class BeitraegeComponent {
   async ngOnInit() {
     const data = await this.pocketBaseService.getBeitraege();
     console.log({ beitraege: data });
+    this.isMobile();
+  }
+
+  isMobile() {
+    if (window.screen.width <= 767) {
+      console.log('<768')
+      this.mobile = true;
+    }else{
+      this.mobile = false;
+    }
   }
 
   async onSubmit() {

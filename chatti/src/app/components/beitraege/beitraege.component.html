@@ -35,19 +35,30 @@
   </form>
    -->
 
-<div class="min-w-[347px] h-[100%] flex flex-col">
+<div class="h-[100%] flex flex-col">
   <div
+    *ngIf="!mobile"
     class="flex-nowrap fix-pos flex items-center w-auto justify-start md:gap-3 flex-column md:flex-row p-0 bg-white dark:bg-gray-900"
   >
     <!-- <p>Selected Item: {{ selectedItem }}</p> -->
     <app-searchbar class="fix-pos"></app-searchbar>
-    <app-dropdown class="fix-pos" (itemSelected)="onItemSelected($event)"></app-dropdown>
+    <app-dropdown
+      class="fix-pos"
+      (itemSelected)="onItemSelected($event)"
+    ></app-dropdown>
 
-    <app-toggle-list class="fix-pos"
+    <app-toggle-list
+      class="fix-pos"
       (checkboxChange)="handleCheckboxChange($event)"
     ></app-toggle-list>
     <app-add class="fix-pos"></app-add>
   </div>
+
+  <!-- NGIF MOBILE HIER WEITER MACHEN  -->
+  <div
+    *ngIf="mobile"
+    class="flex-nowrap fix-pos flex items-center w-auto justify-start md:gap-3 flex-column md:flex-row p-0 bg-white dark:bg-gray-900"
+  ></div>
 
   <app-table
     [checkbox]="checkbox"
