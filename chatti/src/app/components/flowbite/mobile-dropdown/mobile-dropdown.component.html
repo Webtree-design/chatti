@@ -44,10 +44,10 @@
             type="button"
             class="inline-flex items-center justify-between w-[100%] text-gray-500 border-0 bg-gray-50 rounded-b-none focus:outline-none hover:bg-gray-100 font-medium rounded-t-none md:rounded-t-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
             data-accordion-target="#accordion-collapse-body-1"
-            aria-expanded="true"
+            aria-expanded="false"
             aria-controls="accordion-collapse-body-1"
           >
-            <span>Categories</span>
+            <span>{{selectedItemExpander}}</span>
 
             <svg
               class="w-2.5 h-2.5 ml-2.5"
@@ -71,8 +71,8 @@
           class="hidden"
           aria-labelledby="accordion-collapse-heading-1"
         >
-          <div
-            class="px-3 py-1.5 border-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
+          <div (click)="chooseCategoryExpander('1')"
+            class="expander-item px-3 py-1.5 border-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
           >
             <p class="text-gray-500 dark:text-gray-400">1</p>
           </div>
@@ -91,12 +91,12 @@
     </li>
     <li>
       <app-toggle-list
-        class="w-fit"
+        class="w-fit expander-item"
         (checkboxChange)="handleCheckboxChange($event)"
       ></app-toggle-list>
     </li>
     <li>
-      <app-add class="w-fit"></app-add>
+      <app-add class="w-fit expander-item"></app-add>
     </li>
   </ul>
 </div>

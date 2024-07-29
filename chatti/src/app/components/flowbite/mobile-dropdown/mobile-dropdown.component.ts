@@ -19,12 +19,12 @@ import { AddComponent } from '../add/add.component';
   styleUrl: './mobile-dropdown.component.scss',
 })
 export class MobileDropdownComponent implements OnInit {
-  @Output() itemSelected = new EventEmitter<string>();
+  @Output() itemSelected = new EventEmitter<string>(); //DER MUSS RAUS UND DURCH DEN EXPANDER GESTAUSCHT WERDEN
   @Output() checkboxChange = new EventEmitter<boolean>();
 
-  
-  
   public selectedItem: string = 'Category';
+
+  public selectedItemExpander: string = 'Category';
 
   // public selectedPagination: string = 'All';
   public checkbox: boolean = false;
@@ -44,6 +44,9 @@ export class MobileDropdownComponent implements OnInit {
     this.checkboxChange.emit(this.checkbox);
   }
 
+  chooseCategoryExpander(value: string) {
+    this.selectedItemExpander = value;
+  }
   initDropdown() {
     const $targetEl = document.getElementById(
       'dropdownActionMobile'
@@ -84,7 +87,7 @@ export class MobileDropdownComponent implements OnInit {
         dropdown.show();
       });
 
-      const items = $targetEl.querySelectorAll('.dropdown-item');
+      const items = $targetEl.querySelectorAll('.expander-item');
       items.forEach((item) => {
         item.addEventListener('click', (event) =>
           this.handleItemClick(event, dropdown)
@@ -119,23 +122,7 @@ export class MobileDropdownComponent implements OnInit {
   // }
 
   handleCheckboxChange(value: boolean) {
+    this.checkboxChange.emit(value);
     console.log(value);
-    this.toggleTable();
-  }
-
-  toggleTable() {
-    if (this.checkbox) {
-      // Collapsing
-      this.checkbox = !this.checkbox;
-      this.firstTableVisible = !this.firstTableVisible;
-      this.secondTableVisible = !this.secondTableVisible;
-    
-    } else {
-      // Expanding
-      this.checkbox = !this.checkbox;
-      this.secondTableVisible = !this.secondTableVisible;
-      this.firstTableVisible = !this.firstTableVisible;
-    
-    }
   }
 }
