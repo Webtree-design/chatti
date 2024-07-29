@@ -58,7 +58,11 @@
   <div
     *ngIf="mobile"
     class="flex-nowrap fix-pos flex items-center w-auto justify-start md:gap-3 flex-column md:flex-row p-0 bg-white dark:bg-gray-900"
-  ></div>
+  >
+    <app-mobile-dropdown
+      (checkboxChange)="handleCheckboxChange($event)"
+    ></app-mobile-dropdown>
+  </div>
 
   <app-table
     [checkbox]="checkbox"

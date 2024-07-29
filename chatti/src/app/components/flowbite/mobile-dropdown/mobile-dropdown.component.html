@@ -1,0 +1,102 @@
+<div class="">
+  <button
+    id="dropdownActionButtonMobile"
+    class="inline-flex items-center justify-between min-w-32 text-gray-500 border border-b-0 bg-gray-50 rounded-b-none focus:outline-none hover:bg-gray-100 font-medium rounded-t-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+    type="button"
+  >
+    <span class="sr-only">Action button</span>
+    <!-- {{ selectedItem }} -->
+      Filter
+    <svg
+      class="w-2.5 h-2.5 ml-2.5"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 10 6"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m1 1 4 4 4-4"
+      />
+    </svg>
+  </button>
+</div>
+<!-- Dropdown menu -->
+
+<div
+  id="dropdownActionMobile"
+  class="dropdownContent overflow-hidden rounded-t-none z-10 hidden bg-gray-50 divide-y divide-gray-100 rounded-lg w-32 dark:bg-gray-700 dark:divide-gray-600"
+>
+  <ul
+    class="text-sm text-gray-700 dark:text-gray-200 border border-t-0 rounded-lg rounded-t-none"
+  >
+    <li>
+      <app-searchbar class="max-w-32"></app-searchbar>
+    </li>
+    <li>
+      <!-- kategorie expander -->
+      <div id="accordion-collapse" data-accordion="collapse">
+        <h2 id="accordion-collapse-heading-1">
+          <button
+            type="button"
+            class="inline-flex items-center justify-between w-[100%] text-gray-500 border-0 bg-gray-50 rounded-b-none focus:outline-none hover:bg-gray-100 font-medium rounded-t-none md:rounded-t-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+            data-accordion-target="#accordion-collapse-body-1"
+            aria-expanded="true"
+            aria-controls="accordion-collapse-body-1"
+          >
+            <span>Categories</span>
+
+            <svg
+              class="w-2.5 h-2.5 ml-2.5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 10 6"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 4 4 4-4"
+              />
+            </svg>
+          </button>
+        </h2>
+        <div
+          id="accordion-collapse-body-1"
+          class="hidden"
+          aria-labelledby="accordion-collapse-heading-1"
+        >
+          <div
+            class="px-3 py-1.5 border-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
+          >
+            <p class="text-gray-500 dark:text-gray-400">1</p>
+          </div>
+          <div
+            class="px-3 py-1.5 border-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
+          >
+            <p class="text-gray-500 dark:text-gray-400">2</p>
+          </div>
+          <div
+            class="px-3 py-1.5 border-0 border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900"
+          >
+            <p class="text-gray-500 dark:text-gray-400">3</p>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <app-toggle-list
+        class="w-fit"
+        (checkboxChange)="handleCheckboxChange($event)"
+      ></app-toggle-list>
+    </li>
+    <li>
+      <app-add class="w-fit"></app-add>
+    </li>
+  </ul>
+</div>

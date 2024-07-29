@@ -6,9 +6,10 @@ import PocketBase from 'pocketbase';
 import { DropdownComponent } from '../flowbite/dropdown/dropdown.component';
 import { ToggleListComponent } from '../flowbite/toggle-list/toggle-list.component';
 import { SearchbarComponent } from '../flowbite/searchbar/searchbar.component';
+import { AddComponent } from '../flowbite/add/add.component';
 import { TableComponent } from '../flowbite/table/table.component';
 import { PaginationComponent } from '../flowbite/pagination/pagination.component';
-import { AddComponent } from '../flowbite/add/add.component';
+import { MobileDropdownComponent } from '../flowbite/mobile-dropdown/mobile-dropdown.component';
 
 @Component({
   selector: 'app-beitraege',
@@ -19,9 +20,10 @@ import { AddComponent } from '../flowbite/add/add.component';
     DropdownComponent,
     ToggleListComponent,
     SearchbarComponent,
+    AddComponent,
     TableComponent,
     PaginationComponent,
-    AddComponent,
+    MobileDropdownComponent
   ],
   templateUrl: './beitraege.component.html',
   styleUrls: ['./beitraege.component.scss'],
@@ -50,6 +52,7 @@ export class BeitraegeComponent {
     const data = await this.pocketBaseService.getBeitraege();
     console.log({ beitraege: data });
     this.isMobile();
+    
   }
 
   isMobile() {
@@ -96,7 +99,7 @@ export class BeitraegeComponent {
   //   console.log(item);
   // }
 
-  handleCheckboxChange(value: boolean) {
+  handleCheckboxChange(value: any) {
     console.log(value);
     this.toggleTable();
   }
@@ -116,4 +119,7 @@ export class BeitraegeComponent {
       setTimeout(() => {}, 250);
     }
   }
+
+
+  
 }

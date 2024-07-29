@@ -1,0 +1,35 @@
+
+::ng-deep app-searchbar {
+  transform: translateY(0px) !important;
+  input {
+    top: 0 !important;
+    width: 100% !important;
+    border: none;
+    border-radius: none !important;
+  }
+}
+
+::ng-deep app-toggle-list {
+  label {
+    transform: translateY(0px) !important;
+    width: 100% !important;
+    border: none;
+    border-radius: none !important;
+  }
+}
+
+::ng-deep app-add {
+  div {
+    transform: translateY(0px) !important;
+    width: 100% !important;
+    border: none;
+    border-radius: none !important;
+    justify-content: center !important;
+  }
+}
+
+.dropdownContent {
+  // border : 1px solid #f3f4f6 !important; //#f3f4f6
+
+  box-shadow: none !important;
+}

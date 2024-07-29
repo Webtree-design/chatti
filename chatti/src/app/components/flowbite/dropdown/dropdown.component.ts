@@ -11,10 +11,21 @@ import type { DropdownOptions } from 'flowbite';
 export class DropdownComponent implements OnInit {
   @Output() itemSelected = new EventEmitter<string>();
   public selectedItem: string = 'Category';
+  public mobile: boolean = false;
 
   ngOnInit() {
     initFlowbite();
+    this.isMobile();
     this.initDropdown();
+  }
+
+  isMobile() {
+    if (window.screen.width <= 767) {
+      console.log('<768');
+      this.mobile = false;
+    } else {
+      this.mobile = true;
+    }
   }
 
   initDropdown() {
@@ -26,12 +37,19 @@ export class DropdownComponent implements OnInit {
     ) as HTMLElement | null;
 
     if ($targetEl && $triggerEl) {
-     
+      let placement: any = 'bottom';
+      if (this.mobile) {
+        placement = 'bottom';
+      } else {
+        placement = 'right';
+      }
+      console.log(placement)
+
       const options: DropdownOptions = {
-        placement: 'bottom',
+        placement: placement,
         triggerType: 'none', // Set to 'none' to manually handle the toggle
         offsetSkidding: 0,
-        offsetDistance: 10,
+        offsetDistance: 0,
         delay: 300,
         ignoreClickOutsideClass: false,
       };
@@ -39,7 +57,7 @@ export class DropdownComponent implements OnInit {
       // Instance options object
       const instanceOptions = {
         id: 'dropdownMenuCategory',
-        override: false,
+        override: true,
       };
 
       // Create a new Dropdown object
@@ -49,10 +67,10 @@ export class DropdownComponent implements OnInit {
         options,
         instanceOptions
       );
-      
 
       // Add click event listener to the trigger element
       $triggerEl.addEventListener('click', (event) => {
+        console.log(event);
         if (dropdown.isVisible()) {
           return dropdown.hide();
         }

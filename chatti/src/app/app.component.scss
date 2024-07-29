@@ -6,7 +6,7 @@
 }
 
 ::ng-deep .toolbar {
-  background-color: #f9fafb !important;
+  background-color: #f3f4f6 !important;
   padding: 12px !important;
   padding-inline: 30px !important;
   justify-content: space-between;
@@ -113,10 +113,9 @@
 
 .drawer-content-box {
   padding: 12px;
-  border-radius: 12px 0 0 0;
+  // border-radius: 12px 0 0 0;
   background-color: white;
   height: 100%;
   width: 100%;
   max-height: fit-content;
-  
 }
