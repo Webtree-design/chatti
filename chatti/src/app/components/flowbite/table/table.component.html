@@ -38,8 +38,9 @@
               >
                 <div class="p-3 basis-1/5">
                   <img
+                    (click)="openImageDialog(item.mainImageUrl)"
                     [src]="item.mainImageUrl"
-                    class="w-16 md:w-32 max-w-full max-h-full"
+                    class="cursor-pointer w-16 md:w-32 max-w-full max-h-full"
                     alt="mainImage"
                   />
                 </div>
@@ -50,12 +51,10 @@
                 </div>
                 <div class="basis-1/5 p-3 flex flex-col justify-center">
                   <a
-                    href="#"
                     class="font-medium text-red-600 dark:text-red-500 hover:underline"
                     >Remove</a
                   >
                   <a
-                    href="#"
                     class="font-medium text-green-600 dark:text-green-500 hover:underline"
                     >Edit</a
                   >
@@ -74,11 +73,16 @@
               <div
                 class="w-full bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700"
               >
-                <a href="#">
-                  <img class="rounded-t-lg" [src]="item.mainImageUrl" alt="" />
+                <a>
+                  <img
+                    class="rounded-t-lg cursor-pointer"
+                    [src]="item.mainImageUrl"
+                    alt=""
+                    (click)="openImageDialog(item.mainImageUrl)"
+                  />
                 </a>
                 <div class="p-5">
-                  <a href="#">
+                  <a>
                     <h5
                       class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                     >
@@ -89,7 +93,6 @@
                     {{ item.content }}
                   </p>
                   <a
-                    href="#"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Read more

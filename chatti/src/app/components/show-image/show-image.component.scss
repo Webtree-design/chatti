@@ -1,0 +1,34 @@
+.dialog-content {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-size {
+  width: auto;
+  height: auto;
+}
+
+.remove-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.remove-button {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  width: 40px;
+  height: 40px;
+}
+.remove-icon {
+  background-color: rgba(128, 128, 128, 0.425);
+  border-radius: 12px 0px 12px 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

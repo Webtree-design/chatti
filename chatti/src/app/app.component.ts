@@ -33,7 +33,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     CommonModule,
     MatDrawer,
     MatDrawerContent,
-    MatToolbarModule,
+    MatToolbarModule
   ],
 })
 export class AppComponent {
