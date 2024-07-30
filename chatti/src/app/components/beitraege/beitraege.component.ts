@@ -23,18 +23,14 @@ import { MobileDropdownComponent } from '../flowbite/mobile-dropdown/mobile-drop
     AddComponent,
     TableComponent,
     PaginationComponent,
-    MobileDropdownComponent
+    MobileDropdownComponent,
   ],
   templateUrl: './beitraege.component.html',
   styleUrls: ['./beitraege.component.scss'],
 })
 export class BeitraegeComponent {
+  
   private pb: PocketBase;
-  data = {
-    title: '',
-    content: '',
-    images: [],
-  };
   public selectedItem: string = 'Category';
   // public selectedPagination: string = 'All';
   public checkbox: boolean = false;
@@ -42,50 +38,26 @@ export class BeitraegeComponent {
   public secondTableVisible: boolean = false;
   public mobile: boolean = false;
 
-  error: string | null = null;
-
   constructor(private pocketBaseService: PocketbaseService) {
     this.pb = new PocketBase('https://pocket.webtree-design.de');
   }
 
   async ngOnInit() {
-    const data = await this.pocketBaseService.getBeitraege();
-    console.log({ beitraege: data });
     this.isMobile();
-    
   }
 
   isMobile() {
     if (window.screen.width <= 767) {
-      console.log('<768')
+      console.log('<768');
       this.mobile = true;
-    }else{
+      this.checkbox = true;
+      this.firstTableVisible = false;
+      this.secondTableVisible = true;
+    } else {
       this.mobile = false;
-    }
-  }
-
-  async onSubmit() {
-    const data = {
-      title: this.data.title,
-      content: this.data.content,
-      images: this.data.images,
-      user_id: this.pb.authStore.model?.['id'],
-    };
-
-    this.error = null;
-    try {
-      this.pocketBaseService.postBeitraege(data);
-    } catch (error: any) {
-      console.error('Error logging in', error);
-      this.error =
-        error?.response?.data?.message ||
-        'pocketBaseService.createBeitraege(data)';
-    }
-  }
-
-  onFileChange(event: any) {
-    if (event.target.files && event.target.files.length > 0) {
-      this.data.images = Array.from(event.target.files);
+      this.checkbox = false;
+      this.firstTableVisible = true;
+      this.secondTableVisible = false;
     }
   }
 
@@ -119,7 +91,4 @@ export class BeitraegeComponent {
       setTimeout(() => {}, 250);
     }
   }
-
-
-  
 }

@@ -6,7 +6,7 @@
   >
     <span class="sr-only">Action button</span>
     <!-- {{ selectedItem }} -->
-      Filter
+    Filter
     <svg
       class="w-2.5 h-2.5 ml-2.5"
       aria-hidden="true"
@@ -47,7 +47,7 @@
             aria-expanded="false"
             aria-controls="accordion-collapse-body-1"
           >
-            <span>{{selectedItemExpander}}</span>
+            <span>{{ selectedItemExpander }}</span>
 
             <svg
               class="w-2.5 h-2.5 ml-2.5"
@@ -71,27 +71,30 @@
           class="hidden"
           aria-labelledby="accordion-collapse-heading-1"
         >
-          <div (click)="chooseCategoryExpander('1')"
+          <div
+            (click)="chooseCategoryExpander('1')"
             class="expander-item px-3 py-1.5 border-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
           >
             <p class="text-gray-500 dark:text-gray-400">1</p>
           </div>
           <div
-            class="px-3 py-1.5 border-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
+            (click)="chooseCategoryExpander('2')"
+            class="expander-item px-3 py-1.5 border-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
           >
             <p class="text-gray-500 dark:text-gray-400">2</p>
           </div>
           <div
-            class="px-3 py-1.5 border-0 border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900"
+            (click)="chooseCategoryExpander('3')"
+            class="expander-item px-3 py-1.5 border-0 border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900"
           >
             <p class="text-gray-500 dark:text-gray-400">3</p>
           </div>
         </div>
       </div>
     </li>
-    <li>
+    <li class="hidden md:flex">
       <app-toggle-list
-        class="w-fit expander-item"
+        class="w-fit expander-item "
         (checkboxChange)="handleCheckboxChange($event)"
       ></app-toggle-list>
     </li>

@@ -8,7 +8,7 @@
   overflow: hidden;
   transition: all 0.25s ease;
   line-height: 0;
-  padding: 0 0.75em;
+  padding: 0 0.5em;
   color: transparent;
   opacity: 0;
 }
@@ -16,8 +16,7 @@
 .expandable.expanded {
   opacity: 1;
   line-height: 1.5;
-  padding: 0.75rem;
-  padding-bottom: 0rem !important;
+  padding: 0.5rem;
   color: black;
 }
 
@@ -26,7 +25,7 @@
   overflow: hidden;
   transition: all 0.25s ease;
   line-height: 0;
-  padding: 0 0.75em;
+  padding: 0;
   color: transparent;
   opacity: 0;
 }
@@ -34,7 +33,7 @@
 .expandable-two.expanded {
   opacity: 1;
   line-height: 1.5;
-  padding: 0.75rem;
+  padding: 0.5rem;
   color: black;
 }
 
