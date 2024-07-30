@@ -38,12 +38,18 @@ export class TableComponent {
     private pocketBaseService: PocketbaseService
   ) {
     this.pb = new PocketBase('https://pocket.webtree-design.de');
+    
   }
 
-  async ngOnInit() {
+  ngOnInit() {
+  
+  this.getBeitraege();
+  }
+
+  private async getBeitraege() {
     const data = await this.pocketBaseService.getBeitraege();
     this.items = data;
-    console.log({ beitraege: data });
+    console.log({ beitraege: this.items });
   }
 
   ngAfterViewInit() {

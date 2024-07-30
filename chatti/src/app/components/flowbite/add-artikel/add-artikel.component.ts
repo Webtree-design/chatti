@@ -19,7 +19,6 @@ export class AddArtikelComponent {
     title: '',
     content: '',
   };
-  sideFiles: File[] = [];
   imageUrls: string[] = [];
   mainImageIndex: number | null = null; // To keep track of the main image index
   error: string | null = null;
@@ -29,14 +28,18 @@ export class AddArtikelComponent {
   }
 
   async onSubmit() {
-    const mainImage = this.mainImageIndex !== null ? this.sideFiles[this.mainImageIndex] : null;
-    const sideImages = this.mainImageIndex !== null ? this.sideFiles.filter((_, index) => index !== this.mainImageIndex) : this.sideFiles;
+    const mainImage =
+      this.mainImageIndex !== null ? this.imageUrls[this.mainImageIndex] : null;
+    const sideImages =
+      this.mainImageIndex !== null
+        ? this.imageUrls.filter((_, index) => index !== this.mainImageIndex)
+        : this.imageUrls;
 
     const data = {
       title: this.data.title,
       content: this.data.content,
-      images: sideImages,
-      mainImage: mainImage, // Add main image to data
+      imagesUrl: sideImages,
+      mainImageUrl: mainImage, // Add main image to data
       user_id: this.pb.authStore.model?.['id'],
     };
 
@@ -66,18 +69,16 @@ export class AddArtikelComponent {
             }
           };
           reader.readAsDataURL(file);
-          this.sideFiles.push(file);
         } else {
           alert('Please select a valid image file.');
         }
       }
     }
-    console.log(this.sideFiles);
+    console.log(this.imageUrls);
   }
 
   public removeImage(index: number): void {
     this.imageUrls.splice(index, 1);
-    this.sideFiles.splice(index, 1);
     // Update mainImageIndex if necessary
     if (this.mainImageIndex !== null) {
       if (index === this.mainImageIndex) {
@@ -101,7 +102,6 @@ export class AddArtikelComponent {
       title: '',
       content: '',
     };
-    this.sideFiles = [];
     this.imageUrls = [];
     this.mainImageIndex = null;
   }
