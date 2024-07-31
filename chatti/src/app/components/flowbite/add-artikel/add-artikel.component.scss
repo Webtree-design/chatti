@@ -7,3 +7,18 @@
   background-color: rgba(128, 128, 128, 0.425);
   border-radius: 20px;
 }
+
+.save-article {
+  background-color: var(--accept) !important;
+  transition: var(--transition1);
+}
+
+.save-article:hover {
+  background-color: var(--acceptHover) !important;
+}
+
+.save-article:active {
+  scale: 1.1;
+  outline: none;
+  box-shadow: none;
+}

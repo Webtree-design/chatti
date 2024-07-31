@@ -50,13 +50,20 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-::ng-deep ::root {
+:root {
   --backgroundOne: rgb(229, 12, 12) !important;
   --backgroundTwo: rgb(104, 104, 104) !important;
 
   --whiteOne: rgb(255, 253, 250) !important;
-}
 
+  --accept: #dcfce7;
+  --acceptHover: #22c55e;
+
+  --deny: #fee2e2;
+  --denyHover: #ef4444;
+
+  --transition1 : 0.25s
+}
 
 .fix-top-tabs-position {
   transform: translateY(1px);
