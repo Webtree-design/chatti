@@ -8,7 +8,6 @@
   overflow: hidden;
   transition: all 0.25s ease;
   line-height: 0;
-  padding: 0 0.5em;
   color: transparent;
   opacity: 0;
 }
@@ -16,7 +15,6 @@
 .expandable.expanded {
   opacity: 1;
   line-height: 1.5;
-  padding: 0.5rem;
   color: black;
 }
 
