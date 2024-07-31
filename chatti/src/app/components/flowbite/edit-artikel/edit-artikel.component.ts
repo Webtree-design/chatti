@@ -75,7 +75,7 @@ export class EditArtikelComponent implements OnInit {
     try {
       await this.pocketBaseService.updateBeitraege(this.data.id, data); // Assume there's an update method in the service
       this.clearForm();
-      this.router.navigate(['/']); // Redirect to some other page after update
+      this.router.navigate(['/posts']); // Redirect to some other page after update
     } catch (error: any) {
       console.error('Error updating entry', error);
       this.error = error?.response?.data?.message || 'Error updating entry';

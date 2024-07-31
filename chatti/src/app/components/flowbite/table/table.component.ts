@@ -29,10 +29,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent {
-  public bodyHeight: number = 0;
+  public bodyHeight?: number = 0;
   items: any;
-
-  @ViewChild('wrapper') wrapper!: ElementRef;
 
   @Input() selectedItem: string = 'Category';
   @Input() checkbox: boolean = false;
@@ -63,7 +61,9 @@ export class TableComponent {
   }
 
   ngAfterViewInit() {
-    const body = this.wrapper.nativeElement.offsetHeight;
+    const body = document.getElementById('drawer-content-box')?.offsetHeight
+    console.log(body)
+    console.log(body)
     this.bodyHeight = body;
     this.cdRef.detectChanges();
   }

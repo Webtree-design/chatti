@@ -1,4 +1,4 @@
-<section #wrapper id="wrapper" class="h-full">
+<section #wrapper id="wrapper" class="h-100">
   <div
     class="table-media-screen expandable-two border border-b-0 rounded-tl-none rounded-tr-lg"
     [class.expanded]="firstTableVisible == true"
@@ -14,7 +14,9 @@
     appendOnly
     itemSize="auto"
     class="border rounded-bl-lg overflow-hidden rounded-tl-none"
-    [style.height.px]="bodyHeight - (firstTableVisible ? 49 + 33 : 33)"
+    [style.height.px]="
+      bodyHeight! - (firstTableVisible ? 49 + 33 + 50 : 33 + 60)
+    "
     [ngClass]="firstTableVisible ? 'rounded-t-none' : ''"
   >
     <div
@@ -55,7 +57,7 @@
                     >Remove</a
                   >
                   <a
-                  (click)="navigateToEditPage(item)"
+                    (click)="navigateToEditPage(item)"
                     class="font-medium text-green-600 dark:text-green-500 hover:underline"
                     >Edit</a
                   >

@@ -85,13 +85,13 @@
           *ngFor="let imageUrl of imageUrls; let i = index"
         >
           <button
-            class="remove-button w-[168px] h-auto"
+            class="remove-button w-auto h-auto"
             (click)="removeImage(i)"
           >
             <mat-icon class="remove-icon">close</mat-icon>
           </button>
           <img
-            class="border rounded-lg w-[168px] h-auto"
+            class="border rounded-lg max-w-[168px] md:w-full h-auto"
             [src]="imageUrl"
             alt="Selected Image"
             [ngClass]="{ 'border-blue-500': mainImageIndex === i }"
