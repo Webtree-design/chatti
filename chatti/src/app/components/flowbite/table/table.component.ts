@@ -14,6 +14,7 @@ import PocketBase from 'pocketbase';
 import { PocketbaseService } from 'src/app/services/pocketbase.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ShowImageComponent } from '../../show-image/show-image.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-table',
   standalone: true,
@@ -45,7 +46,8 @@ export class TableComponent {
   constructor(
     private cdRef: ChangeDetectorRef,
     private pocketBaseService: PocketbaseService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {
     this.pb = new PocketBase('https://pocket.webtree-design.de');
   }
@@ -78,5 +80,10 @@ export class TableComponent {
       width: 'fit-content',
       maxHeight: '80vh',
     });
+  }
+
+  navigateToEditPage(item: any) {
+    console.log(item);
+    this.router.navigate(['/edit-artikel', item.id], { state: item });
   }
 }

@@ -24,15 +24,9 @@ export class PocketbaseService {
     });
     return res;
   }
-  async updateBeitraege() {
-    const res = await this.pb.collection('beitraege').getFullList({
-      filter: `user_id = "${this.pb.authStore.model?.['id']}"`,
-      sort: '-created',
-    });
-    return res;
+  async updateBeitraege(id: string, data: any) {
+    await this.pb.collection('beitraege').update(id, data);
   }
-
-
 
   //#endregion Beitraege
 }

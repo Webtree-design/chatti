@@ -1,21 +1,23 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PocketbaseService } from 'src/app/services/pocketbase.service';
 import PocketBase from 'pocketbase';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { MatIconModule } from '@angular/material/icon';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-artikel',
+  selector: 'app-edit-artikel',
   standalone: true,
   imports: [CommonModule, FormsModule, MatIconModule],
-  templateUrl: './add-artikel.component.html',
-  styleUrl: './add-artikel.component.scss',
+  templateUrl: './edit-artikel.component.html',
+  styleUrl: './edit-artikel.component.scss',
 })
-export class AddArtikelComponent {
+export class EditArtikelComponent implements OnInit {
   private pb: PocketBase;
   data = {
+    id: '',
     title: '',
     content: '',
   };
@@ -24,9 +26,28 @@ export class AddArtikelComponent {
   error: string | null = null;
   showTitleError = false;
   showImageError = false;
+  public item: any;
 
-  constructor(private pocketBaseService: PocketbaseService) {
+  constructor(
+    private pocketBaseService: PocketbaseService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
     this.pb = new PocketBase('https://pocket.webtree-design.de');
+    const navigation = this.router.getCurrentNavigation();
+    this.item = navigation?.extras.state as { item: any };
+    if (this.item) {
+      this.data = this.item;
+      this.imageUrls = this.item.imagesUrl || [];
+      this.mainImageIndex = this.imageUrls.indexOf(this.item.mainImageUrl);
+    }
+  }
+
+  ngOnInit() {
+    console.log(this.item);
+    // Access the route parameter if needed
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log('Route ID:', id);
   }
 
   async onSubmit() {
@@ -52,11 +73,12 @@ export class AddArtikelComponent {
 
     this.error = null;
     try {
-      await this.pocketBaseService.postBeitraege(data); // Await the promise
+      await this.pocketBaseService.updateBeitraege(this.data.id, data); // Assume there's an update method in the service
       this.clearForm();
+      this.router.navigate(['/']); // Redirect to some other page after update
     } catch (error: any) {
-      console.error('Error logging in', error);
-      this.error = error?.response?.data?.message || 'Error creating entry';
+      console.error('Error updating entry', error);
+      this.error = error?.response?.data?.message || 'Error updating entry';
     }
   }
 
@@ -106,6 +128,7 @@ export class AddArtikelComponent {
 
   clearForm() {
     this.data = {
+      id: '',
       title: '',
       content: '',
     };
