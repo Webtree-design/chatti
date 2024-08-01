@@ -123,5 +123,8 @@
       </div>
     </div>
   </cdk-virtual-scroll-viewport>
-  <app-pagination></app-pagination>
+  <app-pagination
+    (itemsPerPageSelected)="onItemsPerPageSelected($event)"
+    (pageChange)="onPageChange($event)"
+  ></app-pagination>
 </section>

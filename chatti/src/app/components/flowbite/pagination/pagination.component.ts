@@ -5,13 +5,15 @@ import type { DropdownOptions } from 'flowbite';
 @Component({
   selector: 'app-pagination',
   standalone: true,
-  imports: [],
   templateUrl: './pagination.component.html',
-  styleUrl: './pagination.component.scss',
+  styleUrls: ['./pagination.component.scss'],
 })
 export class PaginationComponent implements OnInit {
-  @Output() paginationSelected = new EventEmitter<string>();
+  @Output() itemsPerPageSelected = new EventEmitter<number>();
+  @Output() pageChange = new EventEmitter<number>();
+
   public selectedPagination: string = 'All';
+  private currentPage: number = 1;
 
   ngOnInit() {
     initFlowbite();
@@ -29,28 +31,15 @@ export class PaginationComponent implements OnInit {
     if ($targetEl && $triggerEl) {
       const options: DropdownOptions = {
         placement: 'top',
-        triggerType: 'none', // Set to 'none' to manually handle the toggle
+        triggerType: 'none',
         offsetSkidding: 0,
         offsetDistance: 10,
         delay: 300,
         ignoreClickOutsideClass: false,
       };
 
-      // Instance options object
-      const instanceOptions = {
-        id: 'dropdownMenuPaginator',
-        override: false,
-      };
+      const dropdown = new Dropdown($targetEl, $triggerEl, options);
 
-      // Create a new Dropdown object
-      const dropdown = new Dropdown(
-        $targetEl,
-        $triggerEl,
-        options,
-        instanceOptions
-      );
-
-      // Add click event listener to the trigger element
       $triggerEl.addEventListener('click', (event) => {
         if (dropdown.isVisible()) {
           return dropdown.hide();
@@ -61,13 +50,33 @@ export class PaginationComponent implements OnInit {
       $targetEl.addEventListener('click', (event) => {
         dropdown.hide();
         const target = event.target as HTMLElement;
-        this.paginationSelected.emit(target.textContent?.trim() || '');
         this.selectedPagination = target.textContent?.trim() || '';
+        const value = target.textContent?.trim();
+        if (value === 'All') {
+          this.itemsPerPageSelected.emit(100000);
+        } else {
+          const itemsPerPage = Number(value);
+          if (!isNaN(itemsPerPage)) {
+            this.itemsPerPageSelected.emit(itemsPerPage);
+          }
+        }
       });
     }
   }
 
   selectValue(value: number) {
     console.log(value);
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.pageChange.emit(this.currentPage);
+    }
+  }
+
+  nextPage() {
+    this.currentPage++;
+    this.pageChange.emit(this.currentPage);
   }
 }
