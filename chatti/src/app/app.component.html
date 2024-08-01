@@ -5,11 +5,9 @@
   *ngIf="!authService.isLogged && authService.isRegistering"
 ></app-registration>
 
-
-
 <section class="section">
   <mat-toolbar class="toolbar">
-    <span>My App</span>
+    <span>Webtree Dashboard</span>
 
     <button (click)="logOut()">Logout</button>
   </mat-toolbar>
@@ -57,6 +55,19 @@
             }"
           >
             Posts
+          </div>
+        </div>
+
+        <div class="button-parent" routerLink="/posts">
+          <button>
+            <mat-icon>notifications_active</mat-icon>
+          </button>
+          <div
+            [ngStyle]="{
+              opacity: isHalfSidenav ? '0' : '1'
+            }"
+          >
+            Notifications
           </div>
         </div>
       </div>
