@@ -1,7 +1,14 @@
-// #wrapper {
-//     scrollbar-width: none;
-//     overflow: hidden; /* Hide scrollbars */
-// }
+/* Add to your styles.scss or table.component.scss */
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Use full height of parent */
+}
+
+.cdk-virtual-scroll-viewport {
+  flex-grow: 1; /* Allow the viewport to take up all remaining space */
+}
 
 .expandable {
   background: #fff;
@@ -39,28 +46,18 @@
   height: 100%;
 }
 
-// @media only screen and (max-width: 373px) {
-//   .table-media-screen {
-//     border-radius: 0 0 0.5rem 0.5rem;
-//   }
-// }
-
-/* width */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #f3f4f6;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }

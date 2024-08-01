@@ -61,7 +61,7 @@ export class TableComponent {
   }
 
   ngAfterViewInit() {
-    const body = document.getElementById('drawer-content-box')?.offsetHeight;
+    const body = document.getElementById('mat-drawer-content')?.offsetHeight;
     console.log(body);
     this.bodyHeight = body;
     this.cdRef.detectChanges();

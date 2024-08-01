@@ -14,6 +14,9 @@
     appendOnly
     itemSize="auto"
     class="border rounded-bl-lg overflow-hidden rounded-tl-none"
+    [style.height.px]="
+      bodyHeight! - (firstTableVisible ? 49 + 33 + 50 : 33 + 60)
+    "
     [ngClass]="firstTableVisible ? 'rounded-t-none' : ''"
   >
     <div

@@ -1,5 +1,3 @@
-
-
 .fix-pos {
   max-height: 33px !important;
   // height: 2000px;
@@ -11,4 +9,6 @@
   overflow: hidden;
 }
 
-
+.grow {
+  flex-grow: 1;
+}
