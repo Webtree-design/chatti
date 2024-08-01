@@ -1,20 +1,19 @@
 import {
   ChangeDetectorRef,
   Component,
-  ElementRef,
   Input,
   SimpleChanges,
-  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { PaginationComponent } from '../pagination/pagination.component';
-import PocketBase from 'pocketbase';
 import { PocketbaseService } from 'src/app/services/pocketbase.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ShowImageComponent } from '../../show-image/show-image.component';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-table',
   standalone: true,
@@ -30,7 +29,9 @@ import { Router } from '@angular/router';
 })
 export class TableComponent {
   public bodyHeight?: number = 0;
-  items: any;
+  items: any[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 20;
 
   @Input() selectedItem: string = 'Category';
   @Input() checkbox: boolean = false;
@@ -39,31 +40,29 @@ export class TableComponent {
 
   @Input() image: string | null = null;
 
-  private pb: PocketBase;
+  private beitraegeSubscription: Subscription = new Subscription();
 
   constructor(
     private cdRef: ChangeDetectorRef,
     private pocketBaseService: PocketbaseService,
     public dialog: MatDialog,
     private router: Router
-  ) {
-    this.pb = new PocketBase('https://pocket.webtree-design.de');
-  }
+  ) {}
 
   ngOnInit() {
-    this.getBeitraege();
-  }
-
-  private async getBeitraege() {
-    const data = await this.pocketBaseService.getBeitraege();
-    this.items = data;
-    console.log({ beitraege: this.items });
+    this.beitraegeSubscription = this.pocketBaseService.beitraege$.subscribe(
+      (data) => {
+        this.items = data;
+        console.log({ beitraege: this.items });
+        this.cdRef.detectChanges();
+      }
+    );
+    this.fetchBeitraege();
   }
 
   ngAfterViewInit() {
-    const body = document.getElementById('drawer-content-box')?.offsetHeight
-    console.log(body)
-    console.log(body)
+    const body = document.getElementById('drawer-content-box')?.offsetHeight;
+    console.log(body);
     this.bodyHeight = body;
     this.cdRef.detectChanges();
   }
@@ -72,6 +71,25 @@ export class TableComponent {
     if (changes['checkbox']) {
       this.cdRef.detectChanges();
     }
+  }
+
+  ngOnDestroy() {
+    this.beitraegeSubscription.unsubscribe();
+  }
+
+  fetchBeitraege() {
+    this.pocketBaseService.getBeitraege(this.currentPage, this.itemsPerPage);
+  }
+
+  onItemsPerPageSelected(itemsPerPage: number) {
+    this.itemsPerPage = itemsPerPage;
+    this.currentPage = 1; // Reset to first page whenever items per page changes
+    this.fetchBeitraege();
+  }
+
+  onPageChange(page: number) {
+    this.currentPage = page;
+    this.fetchBeitraege();
   }
 
   openImageDialog(image: string): void {

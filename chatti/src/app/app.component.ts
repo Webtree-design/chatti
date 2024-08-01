@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { PocketbaseService } from './services/pocketbase.service';
 
 // import { initFlowbite } from 'flowbite';
 
@@ -33,7 +34,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     CommonModule,
     MatDrawer,
     MatDrawerContent,
-    MatToolbarModule
+    MatToolbarModule,
   ],
 })
 export class AppComponent {
@@ -46,14 +47,14 @@ export class AppComponent {
   protected isMobileSidenav: boolean = false;
   protected isHalfSidenav: boolean = true;
 
-  
-
   constructor(
     public authService: AuthService,
+    private pocketBaseService: PocketbaseService
   ) {}
 
   ngOnInit() {
     this.sideNav();
+    this.pocketBaseService.getBeitraege();
     // initFlowbite();
   }
 
@@ -61,8 +62,8 @@ export class AppComponent {
     this.authService.isLoggedIn();
   }
 
-  logOut(){
-    this.authService.logout()
+  logOut() {
+    this.authService.logout();
   }
 
   sideNav() {
@@ -97,4 +98,6 @@ export class AppComponent {
         : '220px';
     }
   }
+
+ 
 }
