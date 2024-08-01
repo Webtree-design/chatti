@@ -38,11 +38,11 @@
               <div
                 class="flex flex-col md:flex-row bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
-                <div class="p-3 basis-1/5">
+                <div class="p-3 basis-1/5 rounded-lg">
                   <img
                     (click)="openImageDialog(item.mainImageUrl)"
                     [src]="item.mainImageUrl"
-                    class="cursor-pointer w-16 md:w-32 max-w-full max-h-full"
+                    class="cursor-pointer w-full h-[250px] object-cover rounded-lg"
                     alt="mainImage"
                   />
                 </div>
