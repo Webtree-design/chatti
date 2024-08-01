@@ -104,4 +104,16 @@ export class TableComponent {
     console.log(item);
     this.router.navigate(['/edit-artikel', item.id], { state: item });
   }
+
+  async deleteBeitrag(id: any) {
+    try {
+      await this.pocketBaseService.deleteBeitrag(id);
+      // Filter out the deleted item from the items array
+      this.items = this.items.filter((item) => item.id !== id);
+      this.cdRef.detectChanges();
+    } catch (error) {
+      console.error('Error deleting entry', error);
+      // Optionally, display an error message to the user
+    }
+  }
 }

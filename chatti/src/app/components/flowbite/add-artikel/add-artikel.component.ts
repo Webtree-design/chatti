@@ -3,7 +3,6 @@ import { PocketbaseService } from 'src/app/services/pocketbase.service';
 import PocketBase from 'pocketbase';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -11,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   imports: [CommonModule, FormsModule, MatIconModule],
   templateUrl: './add-artikel.component.html',
-  styleUrl: './add-artikel.component.scss',
+  styleUrls: ['./add-artikel.component.scss'],
 })
 export class AddArtikelComponent {
   private pb: PocketBase;
@@ -80,6 +79,8 @@ export class AddArtikelComponent {
           alert('Please select a valid image file.');
         }
       }
+      // Clear the input value to ensure the change event fires again
+      input.value = '';
     }
     console.log(this.imageUrls);
   }

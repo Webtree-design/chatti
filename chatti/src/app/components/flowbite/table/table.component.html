@@ -14,9 +14,6 @@
     appendOnly
     itemSize="auto"
     class="border rounded-bl-lg overflow-hidden rounded-tl-none"
-    [style.height.px]="
-      bodyHeight! - (firstTableVisible ? 49 + 33 + 50 : 33 + 60)
-    "
     [ngClass]="firstTableVisible ? 'rounded-t-none' : ''"
   >
     <div
@@ -53,6 +50,7 @@
                 </div>
                 <div class="basis-1/5 p-3 flex flex-col justify-center">
                   <a
+                    (click)="deleteBeitrag(item.id)"
                     class="font-medium text-red-600 dark:text-red-500 hover:underline"
                     >Remove</a
                   >
@@ -67,7 +65,7 @@
           </div>
         </div>
         <!-- List Two -->
-        <div class="list-one overflow-auto ">
+        <div class="list-one overflow-auto">
           <div
             [class.expanded]="secondTableVisible == true"
             class="expandable w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
@@ -78,7 +76,7 @@
               >
                 <a>
                   <img
-                    class="rounded-t-lg cursor-pointer"
+                    class="rounded-t-lg cursor-pointer w-full h-[250px] object-cover"
                     [src]="item.mainImageUrl"
                     alt=""
                     (click)="openImageDialog(item.mainImageUrl)"

@@ -41,5 +41,9 @@ export class PocketbaseService {
   async updateBeitraege(id: string, data: any) {
     await this.pb.collection('beitraege').update(id, data);
   }
+
+  async deleteBeitrag(id: string) {
+    await this.pb.collection('beitraege').delete(id);
+  }
   //#endregion Beitraege
 }

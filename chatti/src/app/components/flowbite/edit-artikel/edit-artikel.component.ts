@@ -1,18 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { PocketbaseService } from 'src/app/services/pocketbase.service';
-import PocketBase from 'pocketbase';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute, Router } from '@angular/router';
+import { PocketbaseService } from 'src/app/services/pocketbase.service';
+import PocketBase from 'pocketbase';
 
 @Component({
   selector: 'app-edit-artikel',
   standalone: true,
   imports: [CommonModule, FormsModule, MatIconModule],
   templateUrl: './edit-artikel.component.html',
-  styleUrl: './edit-artikel.component.scss',
+  styleUrls: ['./edit-artikel.component.scss'],
 })
 export class EditArtikelComponent implements OnInit {
   private pb: PocketBase;
@@ -22,6 +21,7 @@ export class EditArtikelComponent implements OnInit {
     content: '',
   };
   imageUrls: string[] = [];
+  mainImageUrl: string = '';
   mainImageIndex: number | null = null; // To keep track of the main image index
   error: string | null = null;
   showTitleError = false;
@@ -39,7 +39,14 @@ export class EditArtikelComponent implements OnInit {
     if (this.item) {
       this.data = this.item;
       this.imageUrls = this.item.imagesUrl || [];
-      this.mainImageIndex = this.imageUrls.indexOf(this.item.mainImageUrl);
+      this.mainImageUrl = this.item.mainImageUrl;
+
+      // Concatenate mainImageUrl and imageUrls, ensuring no duplicates
+      if (this.mainImageUrl && !this.imageUrls.includes(this.mainImageUrl)) {
+        this.imageUrls = [this.mainImageUrl, ...this.imageUrls];
+      }
+      
+      this.mainImageIndex = this.imageUrls.indexOf(this.mainImageUrl);
     }
   }
 
@@ -95,6 +102,7 @@ export class EditArtikelComponent implements OnInit {
             // Automatically set the main image if the total number of images is 1
             if (this.imageUrls.length === 1) {
               this.mainImageIndex = 0;
+              this.mainImageUrl = e.target.result;
             }
           };
           reader.readAsDataURL(file);
@@ -115,6 +123,9 @@ export class EditArtikelComponent implements OnInit {
         // Automatically set the new main image if there are any images left
         if (this.imageUrls.length > 0) {
           this.mainImageIndex = 0;
+          this.mainImageUrl = this.imageUrls[0];
+        } else {
+          this.mainImageUrl = '';
         }
       } else if (index < this.mainImageIndex) {
         this.mainImageIndex--; // Adjust main image index if necessary
@@ -123,6 +134,7 @@ export class EditArtikelComponent implements OnInit {
     // Automatically set the main image if there is only one image left
     if (this.imageUrls.length === 1) {
       this.mainImageIndex = 0;
+      this.mainImageUrl = this.imageUrls[0];
     }
   }
 
@@ -134,10 +146,12 @@ export class EditArtikelComponent implements OnInit {
     };
     this.imageUrls = [];
     this.mainImageIndex = null;
+    this.mainImageUrl = '';
   }
 
   public chooseMainImage(index: number): void {
     this.mainImageIndex = index;
+    this.mainImageUrl = this.imageUrls[index];
   }
 
   private showValidationError() {
